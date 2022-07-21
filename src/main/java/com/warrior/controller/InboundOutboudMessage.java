@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class InboundOutboudMessage {
 	
-	private String message;
+	private String symbol;
+	private String open;
+	private String high;
+	private String low;
+	private String close;
 
 }
