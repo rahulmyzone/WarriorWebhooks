@@ -1,0 +1,5 @@
+application:
+  websocket:
+    topic-template: /topic/subscribe/strategy/
+server:
+  port: 9000
