@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MessageController {
@@ -32,8 +33,9 @@ public class MessageController {
     }
 	
 	@GetMapping("/ping")
-    public String ping(@RequestBody InboundOutboudMessage message) {
-		this.simpMessagingTemplate.convertAndSend("/topic/ping", "pong");
+	@ResponseBody
+    public String ping() {
+		this.simpMessagingTemplate.convertAndSend("/topic/ping", new InboundOutboudMessage("pong"));
 		return "pong";
     }
 }

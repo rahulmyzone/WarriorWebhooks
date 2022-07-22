@@ -15,4 +15,7 @@ public class InboundOutboudMessage {
 	private String low;
 	private String close;
 
+	public InboundOutboudMessage(String s) {
+		symbol=s;
+	}
 }
