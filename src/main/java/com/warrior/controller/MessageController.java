@@ -8,6 +8,7 @@ import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,5 +29,11 @@ public class MessageController {
     public void broadcastSignal(@PathVariable String symbol, @RequestBody InboundOutboudMessage message) {
 		System.out.println(message.getSymbol());
 		this.simpMessagingTemplate.convertAndSend("/topic/"+symbol, message);
+    }
+	
+	@GetMapping("/ping")
+    public String ping(@RequestBody InboundOutboudMessage message) {
+		this.simpMessagingTemplate.convertAndSend("/topic/ping", "pong");
+		return "pong";
     }
 }
